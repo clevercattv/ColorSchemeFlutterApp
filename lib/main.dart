@@ -93,13 +93,11 @@ class _ColorSchemeWidgetState extends State<ColorSchemePage> {
         _colorSchemeIndex = index;
       });
 
-  Widget _selectedNavigationPage(BuildContext context) {
-    return _navigationFunctions.elementAt(_navigationPageIndex)(context);
-  }
+  Widget _selectedNavigationPage(BuildContext context) =>
+      _navigationFunctions.elementAt(_navigationPageIndex)(context);
 
-  Scheme.ColorScheme _selectedColorScheme() {
-    return _colorSchemes.elementAt(_colorSchemeIndex);
-  }
+  Scheme.ColorScheme _selectedColorScheme() =>
+      _colorSchemes.elementAt(_colorSchemeIndex);
 
   Widget _mainPage(BuildContext context) => GestureDetector(
         onTap: _changeBackground,
@@ -115,28 +113,28 @@ class _ColorSchemeWidgetState extends State<ColorSchemePage> {
       );
 
   Widget _borderedMiddleText() => Center(
-    child: Stack(
-      children: [
-        Text(
-          _MIDDLE_SCREEN_TEXT,
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
-            foreground: Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = 1.5
-              ..color = Colors.black,
-          ),
-          textAlign: TextAlign.center,
+        child: Stack(
+          children: [
+            Text(
+              _MIDDLE_SCREEN_TEXT,
+              style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    foreground: Paint()
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 1.5
+                      ..color = Colors.black,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              _MIDDLE_SCREEN_TEXT,
+              style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    color: Colors.white,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
-        Text(
-          _MIDDLE_SCREEN_TEXT,
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
-            color: Colors.white,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ],
-    ),
-  );
+      );
 
   Widget _colorChooserPage(BuildContext context) {
     List<Widget> colors = <Widget>[
